@@ -1,8 +1,16 @@
-import { memo } from "react";
-import { fonts } from "../../styles/font";
-import Button from "../atoms/Button/Button";
-import LabelInput from "../LabelInput/LabelInput";
-import { ButtonBox, LoginBox, LoginPage, SNSLoginBox } from "./styles";
+import { memo } from 'react';
+import { fonts } from '../../styles/font';
+import Button from '../atoms/Button/Button';
+import LabelInput from '../LabelInput/LabelInput';
+import {
+  ButtonBox,
+  LoginBox,
+  LoginPage,
+  SNSButton,
+  SNSLoginBox,
+} from './styles';
+import * as Svg from '../../components/atoms/icon/icon';
+import { useNavigate } from 'react-router-dom';
 
 interface ILogin {
   emailRef?: React.RefObject<HTMLInputElement>;
@@ -21,9 +29,11 @@ const Login = ({
   changeEmailValue,
   changePwValue,
 }: ILogin) => {
-  const REST_API_KEY = "98e8b5d193c0545a83135114e4594ee3";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const navigate = useNavigate();
+  const REST_API_KEY = '98e8b5d193c0545a83135114e4594ee3';
+  const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
   const KAAKO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   return (
     <LoginPage>
       <LoginBox>
@@ -53,18 +63,24 @@ const Login = ({
             handleClick={doLogin}
           />
           <SNSLoginBox>
-            <Button
-              content="카카오로 시작하기"
-              className="kakao"
-              fontFamily={fonts.ko}
-              handleClick={doLogin}
-            />
-            <Button
-              className="google"
-              content="구글로 시작하기"
-              fontFamily={fonts.ko}
-              handleClick={doLogin}
-            />
+            <SNSButton>
+              <Svg.Kakao />
+              <Button
+                content="카카오로 시작하기"
+                className="kakao"
+                fontFamily={fonts.ko}
+                handleClick={() => (window.location.href = KAAKO_AUTH_URL)}
+              />
+            </SNSButton>
+            <SNSButton>
+              <Svg.Google />
+              <Button
+                className="google"
+                content="구글로 시작하기"
+                fontFamily={fonts.ko}
+                handleClick={() => navigate('/oauth/kakao/callback')}
+              />
+            </SNSButton>
           </SNSLoginBox>
         </ButtonBox>
       </LoginBox>

@@ -1,5 +1,5 @@
-import { CSSProperties, memo, useMemo } from "react";
-import { StyledButton } from "./styles";
+import { CSSProperties, memo, useMemo } from 'react';
+import { StyledButton } from './styles';
 
 interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   content: string;
@@ -61,8 +61,7 @@ const Button = ({
       className={className}
       style={style}
       disabled={disabled}
-      onClick={handleClick}
-    >
+      onClick={handleClick}>
       {content}
     </StyledButton>
   );

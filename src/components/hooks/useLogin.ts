@@ -1,11 +1,18 @@
-import { useCallback, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useLogin = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
   const [isDisabled, setIsDisabled] = useState({ email: false, pw: false });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   const changeEmailValue = useCallback(() => {
     const emailValidation = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -34,7 +41,7 @@ const useLogin = () => {
 
   const doLogin = useCallback(() => {
     if (isDisabled.email && isDisabled.pw) {
-      const getUserByLocal: string | null = localStorage.getItem("users");
+      const getUserByLocal: string | null = localStorage.getItem('users');
       const usersArr = getUserByLocal ? JSON.parse(getUserByLocal) : [];
       let customer = {
         email: emailRef.current!.value,
@@ -48,22 +55,22 @@ const useLogin = () => {
             user.pw === pwRef.current!.value
         )
       ) {
-        customer = Object.assign(customer, { isLogin: "login" });
+        customer = Object.assign(customer, { isLogin: 'login' });
         console.log(customer);
 
-        localStorage.setItem("customer", JSON.stringify(customer));
-        return navigate("/quiz");
+        localStorage.setItem('customer', JSON.stringify(customer));
+        return navigate('/quiz');
       } else {
         const arr = getUserByLocal ? JSON.parse(getUserByLocal) : [];
         arr.push({
           email: emailRef.current!.value,
           pw: pwRef.current!.value,
         });
-        localStorage.setItem("users", JSON.stringify(arr));
+        localStorage.setItem('users', JSON.stringify(arr));
       }
-      customer = Object.assign(customer, { isLogin: "join" });
-      localStorage.setItem("customer", JSON.stringify(customer));
-      return navigate("/quiz");
+      customer = Object.assign(customer, { isLogin: 'join' });
+      localStorage.setItem('customer', JSON.stringify(customer));
+      return navigate('/quiz');
     }
   }, [isDisabled]);
 

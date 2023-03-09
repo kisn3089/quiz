@@ -1,6 +1,6 @@
-import { memo } from "react";
-import useLogin from "../components/hooks/useLogin";
-import Login from "../components/Login/Login";
+import { memo } from 'react';
+import useLogin from '../components/hooks/useLogin';
+import Login from '../components/Login/Login';
 
 const LoginPage = () => {
   const {

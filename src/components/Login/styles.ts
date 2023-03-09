@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoginPage = styled.section`
   display: flex;
@@ -65,6 +65,22 @@ export const SNSLoginBox = styled.div`
     .google {
       width: 250px;
       height: 45px;
+    }
+  }
+`;
+
+export const SNSButton = styled.div`
+  position: relative;
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 24%;
+    transform: translatey(-50%);
+    z-index: 1;
+  }
+  @media screen and (max-width: 590px) {
+    svg {
+      left: 16%;
     }
   }
 `;
