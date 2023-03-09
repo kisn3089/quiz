@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const LoginPage = styled.section`
   display: flex;
   justify-content: center;
-  padding: 100px 0 0 0;
+  padding: 150px 0 0 0;
   width: 100%;
   height: calc(100vh - 150px);
   @media screen and (max-width: 590px) {
@@ -24,6 +24,8 @@ export const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 30px;
   button {
     width: 175px;
     height: 55px;
@@ -36,6 +38,33 @@ export const ButtonBox = styled.div`
       width: 150px;
       height: 45px;
       font-size: 16px;
+    }
+  }
+`;
+
+export const SNSLoginBox = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  .kakao,
+  .google {
+    width: 370px;
+    height: 55px;
+    color: #222;
+  }
+  .kakao {
+    background-color: #fee500;
+  }
+  .google {
+    background-color: #fff;
+  }
+  @media screen and (max-width: 590px) {
+    gap: 5px;
+    .kakao,
+    .google {
+      width: 250px;
+      height: 45px;
     }
   }
 `;

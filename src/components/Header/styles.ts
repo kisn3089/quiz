@@ -27,8 +27,8 @@ export const HeaderContainer = styled.header`
   }
 `;
 
-export const NavContainer = styled.div`
-  width: 300px;
+export const NavContainer = styled.div<{ isLogin: boolean }>`
+  width: ${(props) => (props.isLogin ? "400px" : "300px")};
   height: 100%;
   display: flex;
   align-items: center;
@@ -37,9 +37,9 @@ export const NavContainer = styled.div`
     font-size: 20px;
   }
   @media screen and (max-width: 590px) {
-    width: 155px;
+    width: ${(props) => (props.isLogin ? "210px" : "155px")};
     span {
-      font-size: 13px;
+      font-size: 12px;
     }
   }
 `;

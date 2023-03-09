@@ -3,13 +3,21 @@ import useLogin from "../components/hooks/useLogin";
 import Login from "../components/Login/Login";
 
 const LoginPage = () => {
-  const { emailRef, pwRef, isDisabled, doLogin, changeCheckValue } = useLogin();
+  const {
+    emailRef,
+    pwRef,
+    isDisabled,
+    doLogin,
+    changeEmailValue,
+    changePwValue,
+  } = useLogin();
   return (
     <Login
       emailRef={emailRef}
       pwRef={pwRef}
       isDisabled={isDisabled}
-      changeCheckValue={changeCheckValue}
+      changeEmailValue={changeEmailValue}
+      changePwValue={changePwValue}
       doLogin={doLogin}
     />
   );
