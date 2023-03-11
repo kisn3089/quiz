@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import useLogin from '../components/hooks/useLogin';
+import useLogin from '../hooks/useLogin';
 import Login from '../components/Login/Login';
 
 const LoginPage = () => {

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -28,7 +28,7 @@ export const HeaderContainer = styled.header`
 `;
 
 export const NavContainer = styled.div<{ isLogin: boolean }>`
-  width: ${(props) => (props.isLogin ? "400px" : "300px")};
+  width: ${(props) => (props.isLogin ? '400px' : '300px')};
   height: 100%;
   display: flex;
   align-items: center;
@@ -37,9 +37,27 @@ export const NavContainer = styled.div<{ isLogin: boolean }>`
     font-size: 20px;
   }
   @media screen and (max-width: 590px) {
-    width: ${(props) => (props.isLogin ? "210px" : "155px")};
+    width: ${(props) => (props.isLogin ? '210px' : '155px')};
     span {
       font-size: 12px;
+    }
+  }
+`;
+
+export const ImgBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 590px) {
+    img {
+      width: 30px;
+      height: 30px;
     }
   }
 `;

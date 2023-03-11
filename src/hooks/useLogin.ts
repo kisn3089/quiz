@@ -1,18 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userState } from '../store/user';
 
 const useLogin = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
   const [isDisabled, setIsDisabled] = useState({ email: false, pw: false });
+  const [userInRecoil, setUserInRecoil] = useRecoilState(userState);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
 
   const changeEmailValue = useCallback(() => {
     const emailValidation = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -55,10 +51,13 @@ const useLogin = () => {
             user.pw === pwRef.current!.value
         )
       ) {
-        customer = Object.assign(customer, { isLogin: 'login' });
-        console.log(customer);
-
+        customer = Object.assign(customer, { loginState: 'login' });
+        setUserInRecoil({
+          email: emailRef.current!.value,
+          loginState: 'login',
+        });
         localStorage.setItem('customer', JSON.stringify(customer));
+
         return navigate('/quiz');
       } else {
         const arr = getUserByLocal ? JSON.parse(getUserByLocal) : [];
@@ -68,7 +67,8 @@ const useLogin = () => {
         });
         localStorage.setItem('users', JSON.stringify(arr));
       }
-      customer = Object.assign(customer, { isLogin: 'join' });
+      customer = Object.assign(customer, { loginState: 'join' });
+      setUserInRecoil({ email: emailRef.current!.value, loginState: 'join' });
       localStorage.setItem('customer', JSON.stringify(customer));
       return navigate('/quiz');
     }
