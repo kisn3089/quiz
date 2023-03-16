@@ -4,12 +4,14 @@ export type userInRecoil = {
   profileImage?: string;
   thumbnailImage?: string;
   loginState: string;
+  token?: string;
 };
 
 export const defaultUserState: userInRecoil = {
-  email: '',
-  nickName: '',
-  profileImage: '',
-  thumbnailImage: '',
-  loginState: '',
+  email: "",
+  nickName: "",
+  profileImage: "",
+  thumbnailImage: "",
+  loginState: "",
+  token: "",
 };

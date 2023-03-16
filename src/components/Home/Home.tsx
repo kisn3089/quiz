@@ -7,6 +7,7 @@ import { TextLine, HomeBox, TextBox } from "./styles";
 
 const Home = () => {
   const navigator = useNavigate();
+
   return (
     <HomeBox>
       <TextBox>

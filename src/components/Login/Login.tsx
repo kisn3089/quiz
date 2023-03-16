@@ -1,16 +1,17 @@
-import { memo } from 'react';
-import { fonts } from '../../styles/font';
-import Button from '../atoms/Button/Button';
-import LabelInput from '../LabelInput/LabelInput';
+import { memo } from "react";
+import { fonts } from "../../styles/font";
+import Button from "../atoms/Button/Button";
+import LabelInput from "../LabelInput/LabelInput";
 import {
   ButtonBox,
   LoginBox,
   LoginPage,
   SNSButton,
   SNSLoginBox,
-} from './styles';
-import * as Svg from '../../components/atoms/icon/icon';
-import { useNavigate } from 'react-router-dom';
+} from "./styles";
+import * as Svg from "../../components/atoms/icon/icon";
+import { useNavigate } from "react-router-dom";
+import { REDIRECT_LOGIN_URI, REST_API_KEY } from "../const/login";
 
 interface ILogin {
   emailRef?: React.RefObject<HTMLInputElement>;
@@ -30,9 +31,7 @@ const Login = ({
   changePwValue,
 }: ILogin) => {
   const navigate = useNavigate();
-  const REST_API_KEY = '98e8b5d193c0545a83135114e4594ee3';
-  const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
-  const KAAKO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const KAAKO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_LOGIN_URI}&response_type=code`;
 
   return (
     <LoginPage>
@@ -78,7 +77,7 @@ const Login = ({
                 className="google"
                 content="구글로 시작하기"
                 fontFamily={fonts.ko}
-                handleClick={() => navigate('/oauth/kakao/callback')}
+                handleClick={() => navigate("/oauth/kakao/callback")}
               />
             </SNSButton>
           </SNSLoginBox>

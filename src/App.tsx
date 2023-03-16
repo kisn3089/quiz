@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import RankingPage from "./pages/RankingPage";
 import MyPage from "./pages/MyPage";
 import KakaoAuthPage from "./pages/KakaoAuthPage";
+import KakaoLogoutPage from "./pages/KakaoLogoutPage";
 //https://www.figma.com/file/cFntIkMMX5FQuuVIYLMHeT/%ED%80%B4%EC%A6%88-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8?node-id=0-1&t=tduH2jr3bTnwXi3I-0
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/my/:email" element={<MyPage />} />
         <Route path="/oauth/kakao/callback" element={<KakaoAuthPage />} />
+        <Route path="/oauth/kakao/logout" element={<KakaoLogoutPage />} />
         <Route path="*" element={<Navigate to="/quiz" />} />
       </Routes>
     </BrowserRouter>
