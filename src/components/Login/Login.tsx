@@ -1,16 +1,16 @@
-import { memo } from 'react';
-import { fonts } from '../../styles/font';
-import Button from '../atoms/Button/Button';
-import LabelInput from '../LabelInput/LabelInput';
+import { memo } from "react";
+import { fonts } from "../../styles/font";
+import Button from "../atoms/Button/Button";
+import LabelInput from "../LabelInput/LabelInput";
 import {
   ButtonBox,
   LoginBox,
   LoginPage,
   SNSButton,
   SNSLoginBox,
-} from './styles';
-import * as Svg from '../../components/atoms/icon/icon';
-import { useNavigate } from 'react-router-dom';
+} from "./styles";
+import * as Svg from "../../components/atoms/icon/icon";
+import { useNavigate } from "react-router-dom";
 
 interface ILogin {
   emailRef?: React.RefObject<HTMLInputElement>;
@@ -33,17 +33,17 @@ const Login = ({
   const KAAKO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_LOGIN_URI_KAKAO}&response_type=code`;
 
   const googleLogin = () => {
-    const GOOGLE_LOGIN_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
+    const GOOGLE_LOGIN_URL = process.env.REACT_APP_GOOGLE_LOGIN_URL;
     const option = {
       redirect_uri: process.env.REACT_APP_GOOGLE_REDIRECT_URL as string,
       client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID as string,
-      access_type: 'offline',
-      response_type: 'code',
-      prompt: 'consent',
+      access_type: "offline",
+      response_type: "code",
+      prompt: "consent",
       scope: [
-        'https://www.googleapis.com/auth/userinfo.profile',
-        'https://www.googleapis.com/auth/userinfo.email',
-      ].join(' '),
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+      ].join(" "),
     };
 
     const qs = new URLSearchParams(option);

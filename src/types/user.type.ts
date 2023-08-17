@@ -1,7 +1,6 @@
 export type userInRecoil = {
   email: string;
   nickName?: string;
-  profileImage?: string;
   thumbnailImage?: string;
   loginState: string;
   token?: string;
@@ -10,7 +9,6 @@ export type userInRecoil = {
 export const defaultUserState: userInRecoil = {
   email: "",
   nickName: "",
-  profileImage: "",
   thumbnailImage: "",
   loginState: "",
   token: "",

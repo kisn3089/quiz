@@ -71,7 +71,11 @@ const useLogin = () => {
         localStorage.setItem("users", JSON.stringify(arr));
       }
       customer = Object.assign(customer, { loginState: "join" });
-      setUserInRecoil({ email: emailRef.current!.value, loginState: "join" });
+      setUserInRecoil({
+        email: emailRef.current!.value,
+        loginState: "join",
+        thumbnailImage: `${process.env.PUBLIC_URL}/assets/Profile.webp`,
+      });
       localStorage.setItem("customer", JSON.stringify(customer));
       return navigate("/quiz");
     }
