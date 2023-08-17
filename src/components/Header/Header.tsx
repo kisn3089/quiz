@@ -50,7 +50,7 @@ const Header = () => {
           handleClick={() => navigate("/ranking")}
         />
         <Text
-          content={getUser === null ? "login" : "logout"}
+          content={userInRecoil.email === "" ? "login" : "logout"}
           color={getUrl?.includes("/login") ? "#5BECC1" : "#fff"}
           handleClick={doLogout}
         />
